@@ -69,6 +69,15 @@ export const Header = () => {
             >
               Favoritos
             </NavLink>
+            <NavLink
+              to="/generateai"
+              className={({ isActive}) => isActive ?
+                "font-bold text-orange-500 uppercase" :
+                "font-bold text-white uppercase"
+              }
+            >
+              Generar con IA
+            </NavLink>
           </nav>
         </div>
         {isHome && (
