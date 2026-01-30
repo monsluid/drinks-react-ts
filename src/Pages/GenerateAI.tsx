@@ -1,6 +1,24 @@
+import { useMainStore } from "../stores/MainStore"
 
 export default function GenerateAI() {
   
+  const showNotification = useMainStore( state => state.showNotification)
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    const form = new FormData(e.currentTarget)
+    const prompt = form.get('prompt') as string
+
+    if(prompt.trim() === '') {
+      showNotification({
+        text: "La busqueda no puede estar vacio",
+        error: true
+      })
+      return
+    }
+    
+  }
   
   return (
     <>
@@ -8,7 +26,7 @@ export default function GenerateAI() {
 
       <div className="max-w-4xl mx-auto">
         <form  
-          onSubmit={() => {}}
+          onSubmit={handleSubmit}
           className='flex flex-col space-y-3 py-10'
         >
           <div className="relative">
