@@ -3,8 +3,9 @@ import { useMainStore } from "../stores/MainStore"
 export default function GenerateAI() {
   
   const showNotification = useMainStore( state => state.showNotification)
+  const generateRecipe = useMainStore( state => state.generateRecipe)
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     const form = new FormData(e.currentTarget)
@@ -17,6 +18,8 @@ export default function GenerateAI() {
       })
       return
     }
+
+    await generateRecipe(prompt)
     
   }
   
