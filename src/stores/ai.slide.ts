@@ -1,4 +1,5 @@
 import type { StateCreator } from "zustand";
+import aiService from "../services/aiService";
 
 export type AiType = {
   recipe: string
@@ -8,7 +9,7 @@ export type AiType = {
 export const createAiSlide : StateCreator<AiType, [] ,[], AiType> = () => ({
   recipe: '',
   generateRecipe: async (prompt) => {
-    console.log('from slide', prompt);
+    await aiService.generateRecipe(prompt)
           
   },
 })
